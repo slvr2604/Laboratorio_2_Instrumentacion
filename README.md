@@ -183,11 +183,6 @@ Los datos recibidos se organizan en función del tiempo y se muestran mediante u
 ---
 
 # IV. RESULTADOS
-
-
-
-
-# IV. RESULTADOS
 # Código Arduino – ESP32
 
 ## Importación de librerías
