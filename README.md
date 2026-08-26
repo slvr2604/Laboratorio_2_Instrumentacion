@@ -25,6 +25,38 @@ El El objetivo de este trabajo fue desarrollar un sistema portátil basado en el
 
 El sistema se verificó inicialmente con un potenciómetro, el cual se empleó para producir variaciones controladas y comprobar la lectura analógica y la transmisión de los datos. Esta fase comprobada una vez, incorporaron los electrodos para la adquisición de la señal directamente sobrela piel. Los Los datos obtenidos se vincularon posteriormente con MATLAB para su representación gráfica en tiempo real. De este modo se estudió el funcionamiento de un prototipo portátil capaz de adquirir, procesar, transmitir y visualizar la respuesta galvánica de la piel.
 
+---
+
+# II. Marco Teórico
+
+## A. Respuesta Galvánica (GSR)
+
+La Respuesta Galvánica de la Piel (GSR, por sus siglas en inglés) es una señal fisiológica que refleja los cambios en las propiedades eléctricas de la piel debido a las variaciones en la actividad de las glándulas sudoríparas. habilidad de la piel para conducir corriente eléctrica, produciendo cambios en la resistencia o conductancia medida entre dos puntos de contacto.
+
+La actividad de las glándulas sudoríparas está regulada principalmente por el sistema nervioso autónomo, por lo que la señal GSR puede presentar cambios ante diferentes estímulos fisiológicos o ambientales. Debido a esta característica, la GSR es ampliamente utilizada en estudios relacionados con respuestas fisiológicas, interacción humano-máquina y monitoreo no invasivo.
+
+La señal GSR permite identificar variaciones en la actividad fisiológica, aunque sus cambios no pueden asociarse por sí solos con un diagnóstico médico o con una emoción determinada. La interpretación de la señal está condicionada por factores como la calibración del sistema, las condiciones en las que se realiza la medición y las características propias de cada persona.
+
+---
+
+## B. Medición de la respuesta galvánica de la piel
+
+La adquisición de la señal GSR se realiza mediante electrodos superficiales colocados directamente sobre la piel. Los electrodos actúan como punto de contacto entre el tejido y el circuito de medición, permitiendo captar las variaciones eléctricas de la piel para su posterior adquisición y procesamiento.
+
+Al ubicar dos electrodos sobre la superficie de la piel, es posible registrar variaciones en su resistencia eléctrica asociadas con cambios en la humedad superficial. Cuando aumenta la actividad de las glándulas sudoríparas, la conductividad de la piel tiende a incrementarse y, en consecuencia, su resistencia disminuye. Esta variación modifica la señal eléctrica captada por el sistema de adquisición.
+
+La calidad de la medición depende de factores como:
+
+- Ubicación de los electrodos,
+- Presión ejercida sobre la piel,
+- Calidad del contacto,
+- Movimiento del usuario,
+- Condiciones ambientales.
+
+Por lo anterior, la señal adquirida requiere un procesamiento que reduzca las variaciones no deseadas y facilite su análisis e interpretación.
+
+## C. Electrodos adhesivos de gel 
+
 # IV. RESULTADOS
 # Código Arduino – ESP32
 
