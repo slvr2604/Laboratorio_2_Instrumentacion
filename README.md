@@ -183,6 +183,21 @@ Los datos recibidos se organizan en función del tiempo y se muestran mediante u
 ---
 
 # IV. RESULTADOS
+
+<p align="center">
+<img width="739" height="1600" alt="Visualización de la señal obtenida mediante simulación con potenciómetro" src="https://github.com/user-attachments/assets/e5ed2f06-c919-4276-94cc-ed2e48970cec" />
+</p>
+
+<p align="center">
+  <sub>Figura 1. Visualización de la señal obtenida mediante simulación con potenciómetro. Tomado de: Elaboración propia.</sub>
+</p>
+
+La Figura 1. corresponde a la primera etapa experimental realizada con el potenciómetro como elemento de variación de la señal de entrada. En esta prueba se observó el comportamiento de la lectura obtenida por el ESP32 ante cambios en la resistencia del potenciómetro, evidenciando la variación de los valores registrados por el sistema de adquisición.
+
+En la imagen se observa un valor de 3856 unidades ADC, correspondiente a una señal cercana al límite superior del rango de lectura del conversor analógico-digital del ESP32. Debido a que el microcontrolador cuenta con una resolución de 12 bits, la señal adquirida se representa en una escala entre 0 y 4095 niveles digitales, por lo que este valor indica una condición de entrada elevada dentro del rango disponible.
+
+Esta medición permitió verificar que el sistema respondía correctamente ante variaciones de la señal de entrada y que la información adquirida podía ser visualizada mediante la interfaz desarrollada. La lectura obtenida corresponde únicamente a la representación digital de la señal medida por el ADC, por lo que no representa directamente un valor fisiológico de conductancia o resistencia de la piel.
+
 # Código Arduino – ESP32
 
 ## Importación de librerías
