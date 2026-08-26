@@ -4,6 +4,13 @@ Segunda entrega de laboratorio instrumentación biomédica y biosensores BMED C.
 
 
 
+
+# Estimación del nivel de estrés basada en la respuesta galvánica cutánea (GSR)  
+
+## Resumen
+
+En este proyecto se desarrolló un prototipo portátil para la adquisición y monitoreo de la respuesta galvánica de la piel (GSR) mediante un microcontrolador ESP32. La señal fue adquirida de forma no invasiva utilizando electrodos adhesivos de gel ubicados en la región palmar de la mano. Como parte de la validación inicial del sistema, se empleó un potenciómetro para simular variaciones de la señal antes de realizar las mediciones con electrodos. La adquisición se realizó mediante el conversor analógico-digital de 12 bits del ESP32 y se aplicó un promedio de lecturas consecutivas para reducir fluctuaciones. Asimismo, se implementó comunicación inalámbrica mediante WiFi y una interfaz en MATLAB para la visualización de la señal en tiempo real. Los resultados permitieron comprobar el funcionamiento del sistema de adquisición y establecer una base para la calibración y el análisis de la señal GSR bajo diferentes condiciones de medición.
+
 # IV. RESULTADOS
 # Código Arduino – ESP32
 
