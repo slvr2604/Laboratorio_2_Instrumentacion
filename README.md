@@ -55,7 +55,137 @@ La calidad de la medición depende de factores como:
 
 Por lo anterior, la señal adquirida requiere un procesamiento que reduzca las variaciones no deseadas y facilite su análisis e interpretación.
 
+---
+
 ## C. Electrodos adhesivos de gel 
+
+Los electrodos adhesivos de gel permiten establecer el contacto eléctrico entre la piel y el circuito de medición. El material conductor que contienen reduce la impedancia presente en la interfaz piel-electrodo, lo que facilita la captación de las variaciones eléctricas generadas en la superficie de la piel.
+
+En la adquisición de señales fisiológicas, este tipo de electrodos resulta práctico debido a su facilidad de colocación y a que mantiene un contacto estable con la piel durante mediciones de corta duración. En el sistema desarrollado, los electrodos se utilizaron para captar los cambios asociados con las variaciones de conductividad de la piel y transmitirlos hacia la etapa de adquisición.
+
+---
+
+## D. Conversión Analógica-Digital (ADC)
+
+La señal captada por los electrodos corresponde inicialmente a una señal analógica, debido a que las variaciones eléctricas de la piel se presentan de forma continua. Para que pueda ser procesada por un sistema digital, esta señal debe pasar por una etapa de conversión analógico-digital (ADC), encargada de transformar la información eléctrica en datos que puedan ser interpretados por el microcontrolador.
+
+La conversión analógico-digital permite representar las variaciones de la señal mediante valores digitales que posteriormente pueden ser almacenados, procesados o transmitidos. Sin embargo, estos valores constituyen una representación de la señal eléctrica adquirida y no corresponden directamente a magnitudes fisiológicas como la resistencia o la conductancia de la piel. Para obtener estas magnitudes es necesario establecer una relación entre la señal eléctrica medida y la variable de interés mediante la caracterización y calibración del sistema de adquisición.
+
+---
+
+## E. Microcontrolador ESP32
+
+El ESP32 es un microcontrolador utilizado en sistemas embebidos debido a que integra recursos de procesamiento, entradas y salidas digitales, conversión analógico-digital y comunicación inalámbrica. Entre sus características se encuentran la conectividad WiFi y Bluetooth, lo que permite intercambiar información con otros dispositivos sin necesidad de una conexión física.
+
+En el sistema desarrollado, el ESP32 se utiliza como unidad central para la adquisición y transmisión de la señal GSR. La señal proveniente de los electrodos ingresa al microcontrolador a través de una entrada analógica, donde es convertida a datos digitales para su procesamiento. A partir de estos datos, el dispositivo puede realizar operaciones básicas sobre la señal y enviarla de forma inalámbrica hacia un equipo externo. La integración de estas funciones permite utilizar el ESP32 en sistemas de adquisición de señales fisiológicas que requieren un dispositivo de tamaño reducido y comunicación inalámbrica.
+
+---
+
+## F. Procesamiento y filtrado de señales
+
+Durante la adquisición de señales fisiológicas pueden aparecer variaciones que no hacen parte de la respuesta que se quiere medir. En la GSR, estas variaciones pueden deberse al ruido eléctrico, al movimiento de la persona o a cambios en el contacto entre los electrodos y la piel. Como resultado, los valores registrados pueden presentar fluctuaciones que dificultan la observación de los cambios de la señal.
+
+Una forma de reducir estas fluctuaciones es calcular el promedio de varias muestras tomadas de manera consecutiva. El valor obtenido representa las mediciones utilizadas en el cálculo y reduce el efecto de cambios puntuales entre muestras. De esta manera, la señal resultante presenta menos variaciones rápidas y puede observarse con mayor facilidad.
+
+El número de muestras utilizadas influye en el nivel de suavizado. Si se emplean más muestras, la señal presenta menos fluctuaciones, pero los cambios rápidos también pueden verse reducidos. Si se utilizan menos muestras, se conservan mejor las variaciones de la señal, aunque el ruido puede tener mayor presencia. Por esta razón, la cantidad de muestras debe seleccionarse de acuerdo con el comportamiento de la señal que se desea registrar.
+
+---
+
+## G. Comunicación inalámbrica mediante Wifi
+
+La comunicación inalámbrica permite enviar los datos adquiridos por un sistema electrónico sin utilizar cables entre el dispositivo de medición y el equipo que recibe la información. En sistemas de adquisición fisiológica, esta característica resulta útil cuando se necesita que la persona pueda moverse durante la medición o cuando se busca separar físicamente el dispositivo de adquisición del equipo utilizado para visualizar los datos.
+
+El ESP32 incorpora conectividad WiFi, con la cual puede intercambiar información con otros dispositivos a través de una red inalámbrica. Dependiendo de la configuración, el microcontrolador puede conectarse a una red existente o establecer su propia red para permitir la comunicación con un dispositivo externo. Los datos adquiridos pueden enviarse mediante esta conexión hacia un computador u otro equipo encargado de recibirlos y procesarlos.
+
+En el sistema desarrollado, la comunicación WiFi se utiliza para transmitir los valores obtenidos durante la adquisición de la señal GSR. El uso de esta conexión evita depender de un cable USB durante la visualización y permite que el equipo de adquisición funcione de manera independiente del computador. Además, la transmisión inalámbrica facilita la integración del microcontrolador con una interfaz de visualización, en este caso MATLAB, donde los datos pueden recibirse y representarse durante la medición.
+
+La comunicación inalámbrica no modifica la señal fisiológica adquirida, sino que constituye el medio utilizado para transportar los datos desde el sistema de adquisición hasta el dispositivo de visualización. Por esta razón, su funcionamiento debe considerarse junto con aspectos como la velocidad de transmisión, la estabilidad de la conexión y el tiempo requerido para enviar y recibir los datos, especialmente cuando se busca representar la señal en tiempo real.
+
+---
+
+## H. Matlab
+
+MATLAB es un entorno de programación orientado al cálculo numérico, el análisis de datos y la representación gráfica. Su estructura permite trabajar con matrices, vectores y conjuntos de datos, además de incorporar funciones para realizar operaciones matemáticas y procesar información proveniente de diferentes sistemas de adquisición.
+
+En el análisis de señales, MATLAB permite representar los datos en función del tiempo y aplicar operaciones de procesamiento como filtrado, suavizado, análisis estadístico y transformaciones matemáticas. Estas herramientas facilitan la identificación de cambios en la amplitud, tendencias y variaciones presentes en una señal.
+
+---
+
+# III. Metodología
+
+Para el desarrollo del prototipo de monitoreo de respuesta galvánica de la piel (GSR) se realizó una metodología experimental dividida en diferentes etapas, iniciando con la validación del sistema de adquisición mediante una señal simulada y posteriormente integrando la medición con electrodos reales. El procedimiento realizado se describe a continuación.
+
+---
+
+## 1. Diseño e implementación del sistema de adquisición
+
+Inicialmente, se configuró el sistema electrónico utilizando un ESP32 como unidad de adquisición y procesamiento. La señal se conectó a una de las entradas analógicas de la placa, específicamente al pin D34, encargado de recibir las variaciones de voltaje provenientes del circuito de medición.
+
+El ESP32 se seleccionó por las funciones de adquisición analógica, procesamiento digital y comunicación inalámbrica mediante WiFi que integra en una misma plataforma, lo que permitió disponer de un sistema compacto y portátil.
+
+---
+
+## 2. Simulación inicial mediante potenciómetro 
+
+Antes de realizar las mediciones sobre la piel, se realizó una prueba inicial utilizando un potenciómetro como elemento de resistencia variable. Con este componente fue posible modificar manualmente la señal de entrada y observar la respuesta del sistema ante diferentes valores.
+
+Durante esta etapa se verificó:
+- La correcta lectura de la entrada analógica del ESP32.
+- La variación de los valores obtenidos por el conversor analógico-digital.
+- El funcionamiento del procesamiento de la señal.
+- La comunicación entre el dispositivo y la interfaz de visualización.
+
+  Esta prueba permitió comprobar el funcionamiento del montaje antes de conectar los electrodos y realizar la adquisición de la señal GSR.
+
+  ---
+## 3. Integración de electrodos para adquisición de señal GSR
+
+Una vez comprobado el funcionamiento del sistema mediante la señal simulada, se reemplazó el potenciómetro por electrodos adhesivos de gel para realizar la medición directamente sobre la piel.
+
+Los electrodos se colocaron en la región palmar de la mano, estableciendo el contacto necesario para captar las variaciones eléctricas asociadas con los cambios en la conductividad de la piel. Durante la medición se observó el comportamiento de los valores registrados y la estabilidad de la señal bajo las condiciones establecidas para la prueba.
+
+---
+
+## 4. Adquisición y procesamiento de la señal
+
+La señal analógica obtenida mediante los electrodos fue ingresada al conversor analógico-digital (ADC) del ESP32 para transformarla en datos digitales. Las lecturas obtenidas presentaron pequeñas variaciones durante la medición, asociadas principalmente al ruido y al movimiento del usuario.
+
+Para disminuir estas fluctuaciones, se calculó el promedio de varias lecturas consecutivas. Este procedimiento permitió suavizar la señal y reducir los cambios rápidos presentes en los datos adquiridos. La señal procesada se utilizó posteriormente para su visualización y análisis.
+
+---
+
+## 5. Desarrollo de comunicación inalámbrica
+
+Una vez comprobada la adquisición de la señal, se configuró la conexión WiFi del ESP32 para transmitir los datos de manera inalámbrica. El microcontrolador se programó para crear una red propia identificada como GSR_ESP32, a la cual puede conectarse un dispositivo externo sin utilizar una conexión física.
+
+También se configuró una ruta de comunicación para enviar únicamente el valor numérico correspondiente a la señal adquirida. Esta estructura permitió establecer el intercambio de datos entre el ESP32 y MATLAB para su posterior visualización.
+
+---
+
+## 6. Desarrollo de interfaz de visualización
+
+Se desarrolló una interfaz web alojada en el ESP32 para mostrar los datos obtenidos durante la medición. En ella se presenta:
+
+- Valor actual de la señal GSR.
+- Clasificación de la respuesta obtenida según los rangos establecidos.
+- Estado de funcionamiento del sistema.
+
+La interfaz permite consultar los datos durante la adquisición y facilita el seguimiento de los cambios registrados en la señal durante las pruebas.
+
+---
+
+## 7. Visualización y análisis en MATLAB
+
+Finalmente, se estableció la comunicación entre el ESP32 y MATLAB a través de la red WiFi generada por el microcontrolador. MATLAB realiza solicitudes periódicas al dispositivo para obtener los valores registrados durante la adquisición y almacenarlos para su posterior representación.
+
+Los datos recibidos se organizan en función del tiempo y se muestran mediante una gráfica que se actualiza durante la medición. Esta visualización permite seguir los cambios de la señal GSR y comparar su comportamiento bajo las diferentes condiciones evaluadas.
+
+---
+
+# IV. RESULTADOS
+
+
+
 
 # IV. RESULTADOS
 # Código Arduino – ESP32
