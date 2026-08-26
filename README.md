@@ -17,13 +17,13 @@ En este proyecto se desarrolló un prototipo portátil para la adquisición y mo
 
 # I. Introducción
 
-Las señales fisiológicas proporcionan información que permite estudiar los cambios en el organismo ante diferentes condiciones. la conductancia eléctrica de la piel asociada principalmente con la actividad de las glándulas sudoríparas. La respuesta está relacionada con la actividad del sistema nervioso autónomo y, por lo tanto, su registro puede utilizarse para observar las modificaciones fisiológicas producidas en respuesta a ciertos estímulos.
+Las señales fisiológicas proporcionan información que permite estudiar los cambios en el organismo ante diferentes condiciones. la conductancia eléctrica de la piel asociada principalmente con la actividad de las glándulas sudoríparas [1]. La respuesta está relacionada con la actividad del sistema nervioso autónomo y, por lo tanto, su registro puede utilizarse para observar las modificaciones fisiológicas producidas en respuesta a ciertos estímulos [2].
 
-Para registrar la señal GSR es necesario que la piel esté en contacto adecuado con el sistema de medición y que exista una etapa que convierta la variación eléctrica en datos que puedan ser procesados ​​y visualizados. En aplicaciones con movilidad, estas mediciones pueden ser más difíciles si las tareas se realizan con equipos de laboratorio y conexiones físicas. Por Esto resulta necesario pensar en sistemas que concentren la adquisición y el procesamiento en equipos de menor tamaño y que permitan enviar la información sin depender de una conexión directa a un ordenador.
+Para registrar la señal GSR es necesario que la piel esté en contacto adecuado con el sistema de medición y que exista una etapa que convierta la variación eléctrica en datos que puedan ser procesados ​​y visualizados [3]. En aplicaciones con movilidad, estas mediciones pueden ser más difíciles si las tareas se realizan con equipos de laboratorio y conexiones físicas. Por Esto resulta necesario pensar en sistemas que concentren la adquisición y el procesamiento en equipos de menor tamaño y que permitan enviar la información sin depender de una conexión directa a un ordenador.
 
-El El objetivo de este trabajo fue desarrollar un sistema portátil basado en el ESP32 que permitiera la adquisición y transmisión de la señal GSR. La La medición se realizó por medio de electrodos de gel adhesivos ubicados en la región palmar.de la mano, mientras que el microcontrolador se encargó de leer la señal y convertirla en datos digitales. Para aumente la estabilidad de las mediciones se utiliza el promedio de lecturas consecutivas. El ESP32 viene con WiFi integrado, lo cual permitió enviar la información a un dispositivo externo para poder visualizarla posteriormente.
+El El objetivo de este trabajo fue desarrollar un sistema portátil basado en el ESP32 que permitiera la adquisición y transmisión de la señal GSR. La La medición se realizó por medio de electrodos de gel adhesivos ubicados en la región palmar.de la mano, mientras que el microcontrolador se encargó de leer la señal y convertirla en datos digitales [4]. Para aumente la estabilidad de las mediciones se utiliza el promedio de lecturas consecutivas. El ESP32 viene con WiFi integrado, lo cual permitió enviar la información a un dispositivo externo para poder visualizarla posteriormente.
 
-El sistema se verificó inicialmente con un potenciómetro, el cual se empleó para producir variaciones controladas y comprobar la lectura analógica y la transmisión de los datos. Esta fase comprobada una vez, incorporaron los electrodos para la adquisición de la señal directamente sobrela piel. Los Los datos obtenidos se vincularon posteriormente con MATLAB para su representación gráfica en tiempo real. De este modo se estudió el funcionamiento de un prototipo portátil capaz de adquirir, procesar, transmitir y visualizar la respuesta galvánica de la piel.
+El sistema se verificó inicialmente con un potenciómetro, el cual se empleó para producir variaciones controladas y comprobar la lectura analógica y la transmisión de los datos. Esta fase comprobada una vez, incorporaron los electrodos para la adquisición de la señal directamente sobrela piel. Los Los datos obtenidos se vincularon posteriormente con MATLAB para su representación gráfica en tiempo real [5]. De este modo se estudió el funcionamiento de un prototipo portátil capaz de adquirir, procesar, transmitir y visualizar la respuesta galvánica de la piel.
 
 ---
 
@@ -31,9 +31,9 @@ El sistema se verificó inicialmente con un potenciómetro, el cual se empleó p
 
 ## A. Respuesta Galvánica (GSR)
 
-La Respuesta Galvánica de la Piel (GSR, por sus siglas en inglés) es una señal fisiológica que refleja los cambios en las propiedades eléctricas de la piel debido a las variaciones en la actividad de las glándulas sudoríparas. habilidad de la piel para conducir corriente eléctrica, produciendo cambios en la resistencia o conductancia medida entre dos puntos de contacto.
+La Respuesta Galvánica de la Piel (GSR, por sus siglas en inglés) es una señal fisiológica que refleja los cambios en las propiedades eléctricas de la piel debido a las variaciones en la actividad de las glándulas sudoríparas [1]. habilidad de la piel para conducir corriente eléctrica, produciendo cambios en la resistencia o conductancia medida entre dos puntos de contacto.
 
-La actividad de las glándulas sudoríparas está regulada principalmente por el sistema nervioso autónomo, por lo que la señal GSR puede presentar cambios ante diferentes estímulos fisiológicos o ambientales. Debido a esta característica, la GSR es ampliamente utilizada en estudios relacionados con respuestas fisiológicas, interacción humano-máquina y monitoreo no invasivo.
+La actividad de las glándulas sudoríparas está regulada principalmente por el sistema nervioso autónomo, por lo que la señal GSR puede presentar cambios ante diferentes estímulos fisiológicos o ambientales [2]. Debido a esta característica, la GSR es ampliamente utilizada en estudios relacionados con respuestas fisiológicas, interacción humano-máquina y monitoreo no invasivo.
 
 La señal GSR permite identificar variaciones en la actividad fisiológica, aunque sus cambios no pueden asociarse por sí solos con un diagnóstico médico o con una emoción determinada. La interpretación de la señal está condicionada por factores como la calibración del sistema, las condiciones en las que se realiza la medición y las características propias de cada persona.
 
@@ -41,9 +41,9 @@ La señal GSR permite identificar variaciones en la actividad fisiológica, aunq
 
 ## B. Medición de la respuesta galvánica de la piel
 
-La adquisición de la señal GSR se realiza mediante electrodos superficiales colocados directamente sobre la piel. Los electrodos actúan como punto de contacto entre el tejido y el circuito de medición, permitiendo captar las variaciones eléctricas de la piel para su posterior adquisición y procesamiento.
+La adquisición de la señal GSR se realiza mediante electrodos superficiales colocados directamente sobre la piel [3]. Los electrodos actúan como punto de contacto entre el tejido y el circuito de medición, permitiendo captar las variaciones eléctricas de la piel para su posterior adquisición y procesamiento.
 
-Al ubicar dos electrodos sobre la superficie de la piel, es posible registrar variaciones en su resistencia eléctrica asociadas con cambios en la humedad superficial. Cuando aumenta la actividad de las glándulas sudoríparas, la conductividad de la piel tiende a incrementarse y, en consecuencia, su resistencia disminuye. Esta variación modifica la señal eléctrica captada por el sistema de adquisición.
+Al ubicar dos electrodos sobre la superficie de la piel, es posible registrar variaciones en su resistencia eléctrica asociadas con cambios en la humedad superficial. Cuando aumenta la actividad de las glándulas sudoríparas, la conductividad de la piel tiende a incrementarse y, en consecuencia, su resistencia disminuye. Esta variación modifica la señal eléctrica captada por el sistema de adquisición [3].
 
 La calidad de la medición depende de factores como:
 
@@ -59,7 +59,7 @@ Por lo anterior, la señal adquirida requiere un procesamiento que reduzca las v
 
 ## C. Electrodos adhesivos de gel 
 
-Los electrodos adhesivos de gel permiten establecer el contacto eléctrico entre la piel y el circuito de medición. El material conductor que contienen reduce la impedancia presente en la interfaz piel-electrodo, lo que facilita la captación de las variaciones eléctricas generadas en la superficie de la piel.
+Los electrodos adhesivos de gel permiten establecer el contacto eléctrico entre la piel y el circuito de medición. El material conductor que contienen reduce la impedancia presente en la interfaz piel-electrodo, lo que facilita la captación de las variaciones eléctricas generadas en la superficie de la piel [3].
 
 En la adquisición de señales fisiológicas, este tipo de electrodos resulta práctico debido a su facilidad de colocación y a que mantiene un contacto estable con la piel durante mediciones de corta duración. En el sistema desarrollado, los electrodos se utilizaron para captar los cambios asociados con las variaciones de conductividad de la piel y transmitirlos hacia la etapa de adquisición.
 
@@ -67,7 +67,7 @@ En la adquisición de señales fisiológicas, este tipo de electrodos resulta pr
 
 ## D. Conversión Analógica-Digital (ADC)
 
-La señal captada por los electrodos corresponde inicialmente a una señal analógica, debido a que las variaciones eléctricas de la piel se presentan de forma continua. Para que pueda ser procesada por un sistema digital, esta señal debe pasar por una etapa de conversión analógico-digital (ADC), encargada de transformar la información eléctrica en datos que puedan ser interpretados por el microcontrolador.
+La señal captada por los electrodos corresponde inicialmente a una señal analógica, debido a que las variaciones eléctricas de la piel se presentan de forma continua. Para que pueda ser procesada por un sistema digital, esta señal debe pasar por una etapa de conversión analógico-digital (ADC), encargada de transformar la información eléctrica en datos que puedan ser interpretados por el microcontrolador [4].
 
 La conversión analógico-digital permite representar las variaciones de la señal mediante valores digitales que posteriormente pueden ser almacenados, procesados o transmitidos. Sin embargo, estos valores constituyen una representación de la señal eléctrica adquirida y no corresponden directamente a magnitudes fisiológicas como la resistencia o la conductancia de la piel. Para obtener estas magnitudes es necesario establecer una relación entre la señal eléctrica medida y la variable de interés mediante la caracterización y calibración del sistema de adquisición.
 
@@ -75,17 +75,17 @@ La conversión analógico-digital permite representar las variaciones de la señ
 
 ## E. Microcontrolador ESP32
 
-El ESP32 es un microcontrolador utilizado en sistemas embebidos debido a que integra recursos de procesamiento, entradas y salidas digitales, conversión analógico-digital y comunicación inalámbrica. Entre sus características se encuentran la conectividad WiFi y Bluetooth, lo que permite intercambiar información con otros dispositivos sin necesidad de una conexión física.
+El ESP32 es un microcontrolador utilizado en sistemas embebidos debido a que integra recursos de procesamiento, entradas y salidas digitales, conversión analógico-digital y comunicación inalámbrica [4]. Entre sus características se encuentran la conectividad WiFi y Bluetooth, lo que permite intercambiar información con otros dispositivos sin necesidad de una conexión física [5].
 
-En el sistema desarrollado, el ESP32 se utiliza como unidad central para la adquisición y transmisión de la señal GSR. La señal proveniente de los electrodos ingresa al microcontrolador a través de una entrada analógica, donde es convertida a datos digitales para su procesamiento. A partir de estos datos, el dispositivo puede realizar operaciones básicas sobre la señal y enviarla de forma inalámbrica hacia un equipo externo. La integración de estas funciones permite utilizar el ESP32 en sistemas de adquisición de señales fisiológicas que requieren un dispositivo de tamaño reducido y comunicación inalámbrica.
+En el sistema desarrollado, el ESP32 se utiliza como unidad central para la adquisición y transmisión de la señal GSR. La señal proveniente de los electrodos ingresa al microcontrolador a través de una entrada analógica, donde es convertida a datos digitales para su procesamiento. A partir de estos datos, el dispositivo puede realizar operaciones básicas sobre la señal y enviarla de forma inalámbrica hacia un equipo externo. La integración de estas funciones permite utilizar el ESP32 en sistemas de adquisición de señales fisiológicas que requieren un dispositivo de tamaño reducido y comunicación inalámbrica [5].
 
 ---
 
 ## F. Procesamiento y filtrado de señales
 
-Durante la adquisición de señales fisiológicas pueden aparecer variaciones que no hacen parte de la respuesta que se quiere medir. En la GSR, estas variaciones pueden deberse al ruido eléctrico, al movimiento de la persona o a cambios en el contacto entre los electrodos y la piel. Como resultado, los valores registrados pueden presentar fluctuaciones que dificultan la observación de los cambios de la señal.
+Durante la adquisición de señales fisiológicas pueden aparecer variaciones que no hacen parte de la respuesta que se quiere medir [6]. En la GSR, estas variaciones pueden deberse al ruido eléctrico, al movimiento de la persona o a cambios en el contacto entre los electrodos y la piel. Como resultado, los valores registrados pueden presentar fluctuaciones que dificultan la observación de los cambios de la señal.
 
-Una forma de reducir estas fluctuaciones es calcular el promedio de varias muestras tomadas de manera consecutiva. El valor obtenido representa las mediciones utilizadas en el cálculo y reduce el efecto de cambios puntuales entre muestras. De esta manera, la señal resultante presenta menos variaciones rápidas y puede observarse con mayor facilidad.
+Una forma de reducir estas fluctuaciones es calcular el promedio de varias muestras tomadas de manera consecutiva [6]. El valor obtenido representa las mediciones utilizadas en el cálculo y reduce el efecto de cambios puntuales entre muestras. De esta manera, la señal resultante presenta menos variaciones rápidas y puede observarse con mayor facilidad.
 
 El número de muestras utilizadas influye en el nivel de suavizado. Si se emplean más muestras, la señal presenta menos fluctuaciones, pero los cambios rápidos también pueden verse reducidos. Si se utilizan menos muestras, se conservan mejor las variaciones de la señal, aunque el ruido puede tener mayor presencia. Por esta razón, la cantidad de muestras debe seleccionarse de acuerdo con el comportamiento de la señal que se desea registrar.
 
@@ -93,9 +93,9 @@ El número de muestras utilizadas influye en el nivel de suavizado. Si se emplea
 
 ## G. Comunicación inalámbrica mediante Wifi
 
-La comunicación inalámbrica permite enviar los datos adquiridos por un sistema electrónico sin utilizar cables entre el dispositivo de medición y el equipo que recibe la información. En sistemas de adquisición fisiológica, esta característica resulta útil cuando se necesita que la persona pueda moverse durante la medición o cuando se busca separar físicamente el dispositivo de adquisición del equipo utilizado para visualizar los datos.
+La comunicación inalámbrica permite enviar los datos adquiridos por un sistema electrónico sin utilizar cables entre el dispositivo de medición y el equipo que recibe la información. En sistemas de adquisición fisiológica, esta característica resulta útil cuando se necesita que la persona pueda moverse durante la medición o cuando se busca separar físicamente el dispositivo de adquisición del equipo utilizado para visualizar los datos [4].
 
-El ESP32 incorpora conectividad WiFi, con la cual puede intercambiar información con otros dispositivos a través de una red inalámbrica. Dependiendo de la configuración, el microcontrolador puede conectarse a una red existente o establecer su propia red para permitir la comunicación con un dispositivo externo. Los datos adquiridos pueden enviarse mediante esta conexión hacia un computador u otro equipo encargado de recibirlos y procesarlos.
+El ESP32 incorpora conectividad WiFi, con la cual puede intercambiar información con otros dispositivos a través de una red inalámbrica. Dependiendo de la configuración, el microcontrolador puede conectarse a una red existente o establecer su propia red para permitir la comunicación con un dispositivo externo [4]. Los datos adquiridos pueden enviarse mediante esta conexión hacia un computador u otro equipo encargado de recibirlos y procesarlos.
 
 En el sistema desarrollado, la comunicación WiFi se utiliza para transmitir los valores obtenidos durante la adquisición de la señal GSR. El uso de esta conexión evita depender de un cable USB durante la visualización y permite que el equipo de adquisición funcione de manera independiente del computador. Además, la transmisión inalámbrica facilita la integración del microcontrolador con una interfaz de visualización, en este caso MATLAB, donde los datos pueden recibirse y representarse durante la medición.
 
@@ -105,9 +105,9 @@ La comunicación inalámbrica no modifica la señal fisiológica adquirida, sino
 
 ## H. Matlab
 
-MATLAB es un entorno de programación orientado al cálculo numérico, el análisis de datos y la representación gráfica. Su estructura permite trabajar con matrices, vectores y conjuntos de datos, además de incorporar funciones para realizar operaciones matemáticas y procesar información proveniente de diferentes sistemas de adquisición.
+MATLAB es un entorno de programación orientado al cálculo numérico, el análisis de datos y la representación gráfica. Su estructura permite trabajar con matrices, vectores y conjuntos de datos, además de incorporar funciones para realizar operaciones matemáticas y procesar información proveniente de diferentes sistemas de adquisición [7].
 
-En el análisis de señales, MATLAB permite representar los datos en función del tiempo y aplicar operaciones de procesamiento como filtrado, suavizado, análisis estadístico y transformaciones matemáticas. Estas herramientas facilitan la identificación de cambios en la amplitud, tendencias y variaciones presentes en una señal.
+En el análisis de señales, MATLAB permite representar los datos en función del tiempo y aplicar operaciones de procesamiento como filtrado, suavizado, análisis estadístico y transformaciones matemáticas. Estas herramientas facilitan la identificación de cambios en la amplitud, tendencias y variaciones presentes en una señal [7].
 
 ---
 
@@ -197,6 +197,27 @@ La Figura 1. corresponde a la primera etapa experimental realizada con el potenc
 En la imagen se observa un valor de 3856 unidades ADC, correspondiente a una señal cercana al límite superior del rango de lectura del conversor analógico-digital del ESP32. Debido a que el microcontrolador cuenta con una resolución de 12 bits, la señal adquirida se representa en una escala entre 0 y 4095 niveles digitales, por lo que este valor indica una condición de entrada elevada dentro del rango disponible.
 
 Esta medición permitió verificar que el sistema respondía correctamente ante variaciones de la señal de entrada y que la información adquirida podía ser visualizada mediante la interfaz desarrollada. La lectura obtenida corresponde únicamente a la representación digital de la señal medida por el ADC, por lo que no representa directamente un valor fisiológico de conductancia o resistencia de la piel.
+
+<p align="center">
+<img width="1040" height="627" alt="image" src="https://github.com/user-attachments/assets/9b277433-d9bc-4d06-9b28-2d005064aad0" />
+</p>
+
+<p align="center">
+  <sub>Figura 2. Señal GSR obtenida mediante electrodos durante una prueba de actividad física y recuperación en reposo. Tomado de: Elaboración propia.</sub>
+</p>
+
+La figura 2. corresponde a la medición realizada utilizando los electrodos adhesivos de gel ubicados sobre la piel y con transmisión inalámbrica mediante el ESP32. En esta prueba se evaluó el comportamiento de la señal GSR durante una actividad física breve y el periodo posterior de reposo del participante.
+
+En la gráfica se observa inicialmente una variación de la señal asociada al momento en el que el participante realizó una actividad física corta, correspondiente a un desplazamiento de ida y vuelta. Durante este periodo se presentó un aumento en el valor registrado, evidenciando una modificación en la respuesta eléctrica de la piel ante el cambio en la actividad fisiológica del participante.
+
+Posteriormente, al finalizar la actividad y permanecer en reposo, se observa una tendencia descendente de la señal, indicando una disminución progresiva de la respuesta registrada hasta alcanzar valores más estables. Este comportamiento permite evidenciar que el sistema fue capaz de captar variaciones temporales en la señal GSR relacionadas con cambios en las condiciones del participante.
+
+Aunque durante la prueba se presentó una variación en la señal, los valores obtenidos permanecieron dentro del rango de clasificación establecido como respuesta baja por el sistema. Esto demuestra que la clasificación implementada corresponde a una interpretación relativa de la señal adquirida por el prototipo y no representa una medición clínica del nivel de estrés del participante.
+
+Adicionalmente, se evaluó la implementación del prototipo como un sistema portátil tipo wearable, buscando reducir las limitaciones asociadas a una conexión fija con el computador. Para ello, la protoboard con los componentes electrónicos y el ESP32 fueron integrados en una estructura de soporte mediante una muñequera, permitiendo mantener el sistema sujeto al usuario durante la prueba.
+
+La alimentación del dispositivo se realizó mediante una batería externa (power bank) conectada al ESP32, la cual fue ubicada en el bolsillo de la bata del participante para facilitar el desplazamiento y mantener la autonomía del sistema durante la adquisición de la señal. Esta configuración permitió realizar la medición de la respuesta GSR mientras el participante realizaba movimientos, conservando la comunicación inalámbrica con el dispositivo de visualización.
+
 
 # Código Arduino – ESP32
 
@@ -745,3 +766,64 @@ Gráfica en tiempo real
 De esta manera, el ESP32 se encarga de la **adquisición y transmisión inalámbrica**, mientras que MATLAB realiza el **almacenamiento y visualización** de la señal GSR.
 
 Esta implementación corresponde a la etapa de transmisión inalámbrica planteada en la guía de laboratorio.
+
+---
+
+# V. DISCUSIÓN
+
+El sistema desarrollado permitió realizar la adquisición de la respuesta galvánica de la piel mediante un dispositivo portátil basado en ESP32, electrodos superficiales y comunicación inalámbrica. A partir de las pruebas realizadas se evidenció que el prototipo fue capaz de registrar variaciones en la señal eléctrica de la piel y transmitir los datos para su visualización en una interfaz web y MATLAB.
+
+Durante la prueba inicial con el potenciómetro se verificó el correcto funcionamiento de la etapa de adquisición, observando cambios en la lectura del conversor analógico-digital del ESP32 ante variaciones de la señal de entrada. Esta etapa permitió validar la comunicación entre el sistema electrónico y la plataforma de visualización antes de realizar mediciones con señales fisiológicas.
+
+Posteriormente, durante la prueba con electrodos reales, se observó que la señal presentó variaciones asociadas a cambios en la actividad del participante. Al realizar una actividad física corta se evidenció un aumento temporal de la señal, seguido de una disminución progresiva durante el periodo de reposo. Este comportamiento es consistente con la respuesta dinámica de la piel ante cambios en la actividad fisiológica del organismo.
+
+En cuanto al monitoreo ambulatorio, la integración de la muñequera como soporte del sistema electrónico y la alimentación mediante una batería externa permitió desarrollar una configuración portátil que no dependía de una conexión USB. La comunicación inalámbrica mediante el ESP32 facilitó la movilidad del participante durante la adquisición, permitiendo realizar mediciones en diferentes condiciones sin afectar el funcionamiento del sistema.
+
+Sin embargo, aunque la señal GSR puede presentar variaciones relacionadas con estados de activación fisiológica, el sistema desarrollado no permite determinar de manera directa el nivel de estrés de una persona. La respuesta galvánica depende de múltiples factores como las características individuales del usuario, la ubicación de los electrodos, el contacto con la piel, el movimiento y las condiciones ambientales. Por esta razón, sería necesario realizar procesos adicionales de calibración y comparación con otros parámetros fisiológicos para establecer una interpretación más precisa.
+
+Por último, el prototipo no se encuentra preparado para su uso en población neonatal. Aunque la GSR puede aportar información sobre cambios fisiológicos, su aplicación en población neonatal requiere modificaciones importantes relacionadas con seguridad eléctrica, materiales biocompatibles, protocolos clínicos, calibración específica y validación médica.
+
+---
+
+## 1. ¿A qué se debe que una inspiración profunda incremente la magnitud de la respuesta galvánica cutánea (GSR)? 
+
+Una inspiración profunda puede generar cambios en la actividad del sistema nervioso autónomo, produciendo modificaciones temporales en la respuesta fisiológica del organismo. Durante este proceso pueden presentarse variaciones en la actividad de las glándulas sudoríparas, lo que altera la cantidad de humedad presente en la superficie de la piel y, por lo tanto, su conductividad eléctrica.
+
+Este cambio puede ser registrado por el sistema GSR como una variación en la señal adquirida. Sin embargo, la magnitud de la respuesta depende de factores propios del participante, como el estado fisiológico, la hidratación, la temperatura de la piel y las condiciones en las que se realiza la medición.
+
+## 2. ¿Cuáles serían las ventajas y desventajas de utilizar la GSR como indicador de estrés? 
+
+Entre las principales ventajas de la GSR se encuentra que es una técnica no invasiva, de fácil implementación y que permite registrar cambios fisiológicos en tiempo real mediante sensores simples. Además, puede integrarse en sistemas portátiles debido a los bajos requerimientos electrónicos para su adquisición, como se evidenció en el prototipo desarrollado con ESP32.
+
+Por otra parte, una de sus principales limitaciones es que la GSR no representa una medición exclusiva del estrés, ya que la señal puede modificarse por diferentes estímulos físicos o emocionales. Factores como el movimiento, la temperatura, la humedad de la piel y las diferencias entre individuos pueden afectar los resultados obtenidos. Por esta razón, la GSR debe considerarse un indicador complementario de cambios en la actividad fisiológica y no una herramienta única para determinar el nivel de estrés de una persona.
+
+---
+
+# VI. CONCLUSIONES
+
+El prototipo desarrollado permitió adquirir y visualizar variaciones de la respuesta galvánica de la piel mediante un sistema basado en ESP32, electrodos superficiales y comunicación inalámbrica, demostrando la viabilidad de implementar una solución portátil para el monitoreo de señales fisiológicas.
+
+La integración del sistema electrónico, la transmisión inalámbrica y la visualización en MATLAB permitió observar cambios temporales en la señal GSR durante diferentes condiciones de medición, evidenciando la capacidad del prototipo para registrar variaciones en la conductividad eléctrica de la piel.
+
+Los resultados obtenidos permitieron comprobar que la señal GSR puede utilizarse como un indicador de cambios en la actividad fisiológica; sin embargo, su interpretación requiere procesos adicionales de calibración y análisis, debido a que la respuesta puede verse afectada por factores individuales y condiciones externas de medición.
+
+Como trabajo futuro se plantea realizar una caracterización más amplia del sistema mediante pruebas con diferentes participantes, ajustar los rangos de interpretación de la señal y desarrollar métodos de procesamiento que permitan mejorar la confiabilidad del análisis obtenido.
+
+---
+
+# Referencias
+
+[1] D. C. Fowles, M. J. Christie, R. Edelberg, W. W. Grings, G. A. Lykken, and P. H. Venables, “Publication recommendations for electrodermal measurements,” Psychophysiology, vol. 18, no. 3, pp. 232–239, 1981.
+
+[2] W. Boucsein, Electrodermal Activity. New York, NY, USA: Springer, 2012.
+
+[3] J. R. Norris, “The use of galvanic skin response in psychophysiological research,” Psychophysiology, vol. 6, no. 3, pp. 287–298, 1969.
+
+[4] A. S. Cacioppo, L. G. Tassinary, and G. Berntson, Handbook of Psychophysiology, 4th ed. Cambridge, UK: Cambridge University Press, 2017.
+
+[5] Espressif Systems, “ESP32 Series Datasheet,” Espressif Systems, 2024. [Online]. Available: https://www.espressif.com/
+
+[6] Espressif Systems, “ESP32 Technical Reference Manual,” Espressif Systems, 2024. [Online]. Available: https://www.espressif.com/
+
+[7] MathWorks, “MATLAB Documentation: Data Analysis and Visualization,” MathWorks. [Online]. Available: https://www.mathworks.com/help/
+
