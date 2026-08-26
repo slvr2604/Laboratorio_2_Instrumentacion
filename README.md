@@ -11,7 +11,19 @@ Segunda entrega de laboratorio instrumentación biomédica y biosensores BMED C.
 
 En este proyecto se desarrolló un prototipo portátil para la adquisición y monitoreo de la respuesta galvánica de la piel (GSR) mediante un microcontrolador ESP32. La señal fue adquirida de forma no invasiva utilizando electrodos adhesivos de gel ubicados en la región palmar de la mano. Como parte de la validación inicial del sistema, se empleó un potenciómetro para simular variaciones de la señal antes de realizar las mediciones con electrodos. La adquisición se realizó mediante el conversor analógico-digital de 12 bits del ESP32 y se aplicó un promedio de lecturas consecutivas para reducir fluctuaciones. Asimismo, se implementó comunicación inalámbrica mediante WiFi y una interfaz en MATLAB para la visualización de la señal en tiempo real. Los resultados permitieron comprobar el funcionamiento del sistema de adquisición y establecer una base para la calibración y el análisis de la señal GSR bajo diferentes condiciones de medición.
 
-##### Palabras clave: respuesta galvánica de la piel, GSR, ESP32, adquisición de señales fisiológicas, electrodos de gel, WiFi, MATLAB.
+#### Palabras clave: respuesta galvánica de la piel, GSR, ESP32, adquisición de señales fisiológicas, electrodos de gel, WiFi, MATLAB.
+
+---
+
+# I. Introducción
+
+Las señales fisiológicas proporcionan información que permite estudiar los cambios en el organismo ante diferentes condiciones. la conductancia eléctrica de la piel asociada principalmente con la actividad de las glándulas sudoríparas. La respuesta está relacionada con la actividad del sistema nervioso autónomo y, por lo tanto, su registro puede utilizarse para observar las modificaciones fisiológicas producidas en respuesta a ciertos estímulos.
+
+Para registrar la señal GSR es necesario que la piel esté en contacto adecuado con el sistema de medición y que exista una etapa que convierta la variación eléctrica en datos que puedan ser procesados ​​y visualizados. En aplicaciones con movilidad, estas mediciones pueden ser más difíciles si las tareas se realizan con equipos de laboratorio y conexiones físicas. Por Esto resulta necesario pensar en sistemas que concentren la adquisición y el procesamiento en equipos de menor tamaño y que permitan enviar la información sin depender de una conexión directa a un ordenador.
+
+El El objetivo de este trabajo fue desarrollar un sistema portátil basado en el ESP32 que permitiera la adquisición y transmisión de la señal GSR. La La medición se realizó por medio de electrodos de gel adhesivos ubicados en la región palmar.de la mano, mientras que el microcontrolador se encargó de leer la señal y convertirla en datos digitales. Para aumente la estabilidad de las mediciones se utiliza el promedio de lecturas consecutivas. El ESP32 viene con WiFi integrado, lo cual permitió enviar la información a un dispositivo externo para poder visualizarla posteriormente.
+
+El sistema se verificó inicialmente con un potenciómetro, el cual se empleó para producir variaciones controladas y comprobar la lectura analógica y la transmisión de los datos. Esta fase comprobada una vez, incorporaron los electrodos para la adquisición de la señal directamente sobrela piel. Los Los datos obtenidos se vincularon posteriormente con MATLAB para su representación gráfica en tiempo real. De este modo se estudió el funcionamiento de un prototipo portátil capaz de adquirir, procesar, transmitir y visualizar la respuesta galvánica de la piel.
 
 # IV. RESULTADOS
 # Código Arduino – ESP32
