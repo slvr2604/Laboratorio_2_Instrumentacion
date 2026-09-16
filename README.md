@@ -4,7 +4,6 @@ Segunda entrega de laboratorio instrumentación biomédica y biosensores BMED C.
 
 
 
-
 # Estimación del nivel de estrés basada en la respuesta galvánica cutánea (GSR)  
 
 ## Resumen
